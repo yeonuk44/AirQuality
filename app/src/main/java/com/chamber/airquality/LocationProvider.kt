@@ -12,10 +12,10 @@ class LocationProvider(val context: Context) {
     private var locationManager: LocationManager? =null
 
     init {
-        getLotion()
+        getLocation()
     }
 
-    private fun getLotion() : Location? {
+    private fun getLocation() : Location? {
         try {
             locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
 

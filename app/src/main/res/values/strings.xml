@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">AirQuality</string>
-    <string name="location_title">봉천동</string>
-    <string name="location_content">대한민국 서울특별시</string>
+    <string name="location_title">원동</string>
+    <string name="location_content">대한민국 오산시</string>
     <string name="count">50</string>
     <string name="title">보통</string>
     <string name="measured_at">측정 시간</string>
@@ -13,4 +13,8 @@
     <string name="setting">설정</string>
     <string name="cancel">취소</string>
     <string name="unavailable_location_service">위치 서비스를 사용할 수 없습니다.</string>
+    <string name="no_fetch_location_info">위도, 경도 정보를 가져올 수 없습니다.</string>
+    <string name="impossible_geocoder_service">지오코더 서비스를 이용할 수 없습니다.</string>
+    <string name="incurrect_location_info">잘못된 위도, 경도입니다.</string>
+    <string name="not_found_address">주소가 발견되지 않았습니다.</string>
 </resources>
