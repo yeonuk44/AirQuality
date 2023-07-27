@@ -2,4 +2,8 @@
     <string name="app_name">AirQuality</string>
     <string name="location_title">역삼동</string>
     <string name="location_content">대한민국 서울특별시</string>
+    <string name="count">50</string>
+    <string name="title">보통</string>
+    <string name="measured_at">측정 시간</string>
+    <string name="time">2023-07-27 13:30</string>
 </resources>
