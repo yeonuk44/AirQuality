@@ -6,7 +6,52 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- textview info -->
+    <TextView
+        android:id="@+id/tv_location_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_title"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:letterSpacing="-0.05"
+        app:layout_constraintStart_toEndOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/guideline4"/>
 
+    <TextView
+        android:id="@+id/tv_location_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/location_content"
+        android:letterSpacing="-0.05"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        app:layout_constraintStart_toStartOf="@id/guideline1"
+        app:layout_constraintTop_toBottomOf="@id/tv_location_title"/>
+
+    <!-- imageview info -->
+    <ImageView
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/iocn_thunder"
+        app:layout_constraintStart_toEndOf="@id/tv_location_title"
+        app:layout_constraintTop_toTopOf="@id/tv_location_title"
+        app:layout_constraintBottom_toBottomOf="@id/tv_location_title"
+        android:layout_marginStart="9dp"/>
+
+    <ImageView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="@id/guideline2"
+        app:layout_constraintEnd_toEndOf="@id/guideline3"
+        app:layout_constraintDimensionRatio="h,1:1"
+        android:src="@drawable/bg_good"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.4"/>
+
+    <!-- baseline info -->
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
         android:layout_width="wrap_content"
