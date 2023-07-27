@@ -1,9 +1,16 @@
 <resources>
     <string name="app_name">AirQuality</string>
-    <string name="location_title">역삼동</string>
+    <string name="location_title">봉천동</string>
     <string name="location_content">대한민국 서울특별시</string>
     <string name="count">50</string>
     <string name="title">보통</string>
     <string name="measured_at">측정 시간</string>
     <string name="time">2023-07-27 13:30</string>
+    <string name="all_permission_check">권한이 거부되어 앱의 기능을 이용할 수 없습니다. 앱을 다시 실행하여 모든 권한을 허용해주세요.</string>
+    <string name="no_location_service">위치 서비스를 이용할 수 없습니다.</string>
+    <string name="deactivate_location_service">위치 서비스 비활성화</string>
+    <string name="non_consent_location_service">위치 서비스가 꺼져있습니다. 설정해야 앱을 사용할 수 있습니다.</string>
+    <string name="setting">설정</string>
+    <string name="cancel">취소</string>
+    <string name="unavailable_location_service">위치 서비스를 사용할 수 없습니다.</string>
 </resources>
