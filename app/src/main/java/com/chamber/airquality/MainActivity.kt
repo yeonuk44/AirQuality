@@ -85,7 +85,8 @@ import java.util.Locale
              return null
          }
 
-         return addresses[0]
+         // index가 0번인 addresses의 값을 받아오니 thoroughfare의 값이 null로 되는 현상을 보았음. 최대 7개의 결과를 저장하기 때문에 비교적 안정적이라고 판단되는 1번째 index의 정보를 가져왔음
+         return addresses[1]
      }
 
 
