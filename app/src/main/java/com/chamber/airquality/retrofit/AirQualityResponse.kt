@@ -1,6 +1,6 @@
 package com.chamber.airquality.retrofit
 
-data class AiQualityResponse(
+data class AirQualityResponse(
     val `data`: Data,
     val status: String
 ) {

@@ -17,4 +17,10 @@
     <string name="impossible_geocoder_service">지오코더 서비스를 이용할 수 없습니다.</string>
     <string name="incurrect_location_info">잘못된 위도, 경도입니다.</string>
     <string name="not_found_address">주소가 발견되지 않았습니다.</string>
+    <string name="fetch_data_success">최신 데이터 업데이트 완료!</string>
+    <string name="no_fetch_data_failure">데이터를 가져오는 데 실패했습니다.</string>
+    <string name="title_good">좋음</string>
+    <string name="title_soso">보통</string>
+    <string name="title_bad">나쁨</string>
+    <string name="title_worst">매우 나쁨</string>
 </resources>

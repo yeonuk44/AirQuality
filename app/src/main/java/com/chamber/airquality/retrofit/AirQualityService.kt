@@ -10,5 +10,5 @@ interface AirQualityService {
         @Query("lat") lat : String,
         @Query("lon") log : String,
         @Query("key") key : String
-    ): Call<AirQualityService>
+    ): Call<AirQualityResponse>
 }

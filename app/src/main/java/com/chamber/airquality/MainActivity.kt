@@ -18,7 +18,17 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.chamber.airquality.databinding.ActivityMainBinding
+import com.chamber.airquality.retrofit.AirQualityResponse
+import com.chamber.airquality.retrofit.AirQualityService
+import com.chamber.airquality.retrofit.RetrofitConnection
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import retrofit2.Retrofit
 import java.io.IOException
+import java.time.ZoneId
+import java.time.ZonedDateTime
+import java.time.format.DateTimeFormatter
 import java.util.Locale
 
  class MainActivity : AppCompatActivity() {
@@ -42,7 +52,14 @@ import java.util.Locale
 
         checkAllPermissions()
         updateUI()
+        setRefreshButton()
     }
+
+     private fun setRefreshButton() {
+         binding.imgRefresh.setOnClickListener{
+             updateUI()
+         }
+     }
 
      private fun updateUI() {
          locationProvider = LocationProvider(this@MainActivity)
@@ -60,8 +77,70 @@ import java.util.Locale
              }
              // 2. 미세먼지 농도 가져오고 UI 업데이트
 
+             getAirQualityData(latitude, longitude)
+
          }else{
              Toast.makeText(this, R.string.no_fetch_location_info, Toast.LENGTH_LONG).show()
+         }
+     }
+
+     private fun getAirQualityData(latitude: Double, longitude: Double) {
+         var retrofitAPI = RetrofitConnection.getInstance().create(
+             AirQualityService::class.java
+         )
+
+         retrofitAPI.getAirQualityData(
+             latitude.toString(),
+             longitude.toString(),
+
+             ""
+         ).enqueue( object : Callback<AirQualityResponse>{
+             override fun onResponse(
+                 call: Call<AirQualityResponse>,
+                 response: Response<AirQualityResponse>
+             ) {
+                 if(response.isSuccessful){
+                     Toast.makeText(this@MainActivity, R.string.fetch_data_success, Toast.LENGTH_LONG).show()
+                     response.body()?.let { updateAirUI(it) }
+                 }else{
+                     Toast.makeText(this@MainActivity, R.string.no_fetch_data_failure, Toast.LENGTH_LONG).show()
+                 }
+             }
+             override fun onFailure(call: Call<AirQualityResponse>, t: Throwable) {
+                 t.printStackTrace()
+             }
+         })
+     }
+
+     private fun updateAirUI(airQualityData: AirQualityResponse) {
+         val pollutionData = airQualityData.data.current.pollution
+
+         // 수치를 지정
+         binding.tvCount.text = pollutionData.aqius.toString()
+
+         // 측정된 날짜
+         val dateTime = ZonedDateTime.parse(pollutionData.ts).withZoneSameInstant(ZoneId.of("Asia/Seoul")).toLocalDateTime()
+         val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+
+         binding.tvTime.text = dateTime.format(dateFormatter).toString()
+
+         when(pollutionData.aqius){
+             in 0..50->{
+                 binding.tvTitle.text = "${R.string.title_good}"
+                 binding.imgBg.setImageResource(R.drawable.bg_good)
+             }
+             in 51..150->{
+                 binding.tvTitle.text = "${R.string.title_soso}"
+                 binding.imgBg.setImageResource(R.drawable.bg_soso)
+             }
+             in 151..200->{
+                 binding.tvTitle.text = "${R.string.title_bad}"
+                 binding.imgBg.setImageResource(R.drawable.bg_bad)
+             }
+             else->{
+                 binding.tvTitle.text = "${R.string.title_worst}"
+                 binding.imgBg.setImageResource(R.drawable.bg_worst)
+             }
          }
      }
 
